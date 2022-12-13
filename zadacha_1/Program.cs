@@ -6,16 +6,19 @@
 
 
 System.Console.Write("Введите цифры через пробел: ");
-string text = Console.ReadLine();
-string[] result = text.Split(" ");
-CountNumbers(result);
+int[] array = Console.ReadLine().Split(" ").Select(int.Parse).ToArray();
+int count = CountNumbers(array);
+System.Console.WriteLine("[" + string.Join(", ", array) + "]" + " -> ", count);
 
-void CountNumbers(string[] text)
+int CountNumbers(int[] arr)
 {
-    int i = 0;
-    while (i < result.Length)
+    int count = 0;
+    for (int i = 0; i < arr.Length; i++)
     {
-        i++;
+        if (arr[i] > 0)
+        {
+            count++;
+        }
     }
-    System.Console.WriteLine(i);
+    return count;
 }
